@@ -3,73 +3,74 @@
 <img width="278" height="332" alt="volsed-in-fl" src="https://github.com/user-attachments/assets/d10d3886-1f2f-4115-8871-0bc2140bd95e" />
 
 
-**Volsed** is an audio plugin and standalone application built using the [JUCE](https://juce.com/) framework.
+**Volsed** is a simple audio gain plugin built with the [JUCE](https://juce.com/) framework.
+
+It lets you adjust the output volume of your audio, from -12 dB to +12 dB. It also includes a bypass button to quickly turn off gain processing and hear the original signal.
+
+Volsed is designed to do one thing and keep it simple, with a clean interface and straightforward controls.
 
 ## Features
 
-- VST3 audio plugin support.
-- Standalone application.
-- Built with the JUCE framework.
-- Compatible with FL Studio.
+- Output gain adjustment from -12 dB to +12 dB.
+- Smooth volume changes to avoid sudden jumps in level.
+- Bypass button to turn gain processing on or off.
+- Mono and stereo support.
+- Available as both a VST3 plugin and a standalone application.
 
 ## Compatibility
 
-Volsed has been tested and verified to work correctly in **FL Studio**.
+Volsed has been tested and works in **FL Studio**. It should also work in other DAWs that support VST3 plugins.
 
-## Prerequisites
+## Requirements
 
-Before building the project, make sure the following tools are installed on your system:
+To build Volsed from source, you'll need:
 
-- **CMake** (version 3.22 or higher)
-- **C/C++ Compiler** (MSVC is used in the default instructions; Clang and GCC are also supported)
-- **Ninja** build system (recommended)
+- **CMake** 3.22 or newer.
+- A C/C++ compiler (MSVC, Clang, or GCC).
+- **Ninja** (recommended).
 
-**Note:** Make sure that your compiler, CMake, and Ninja are properly added to your system's `PATH` environment variable.
+Make sure CMake, your compiler, and Ninja are added to your system's `PATH`.
 
 ## Building from Source
 
 ### 1. Clone the Repository
 
-Clone the repository and navigate to the project root directory.
+Clone the repository and open the project directory in your terminal.
 
-### 2. Generate Build Files
+### 2. Configure the Project
 
-Open a terminal or, if you're using MSVC on Windows, a Developer Command Prompt.
-
-Run the following command to configure the project using CMake and Ninja:
+If you're using MSVC on Windows, open a Developer Command Prompt and run:
 
 ```bash
 cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=cl -DCMAKE_CXX_COMPILER=cl
 ```
 
-### 3. Build the Project
+### 3. Build
 
-Once the configuration is complete, compile the project using:
+Once CMake has finished configuring the project, run:
 
 ```bash
 cmake --build build --config Release -j 8
 ```
 
-## Build Artifacts
+## Build Output
 
-After a successful build, the generated files will be available in the following directory:
+After a successful build, you'll find the generated files in:
 
 ```text
 build/Volsed_artefacts/Release/
 ```
 
-The build output includes:
+The output includes:
 
-- **VST3 Plugin:** `VST3/Volsed.vst3`
-- **Standalone Application:** `Standalone/Volsed.exe`
+- **VST3:** `VST3/Volsed.vst3`
+- **Standalone:** `Standalone/Volsed.exe`
 
-### Installing the VST3 Plugin
+## Installing
 
 To use Volsed in your DAW:
 
-1. Locate the generated `Volsed.vst3` directory.
-2. Copy it to your DAW's VST3 plugin directory.
-3. Open or restart your DAW.
-4. Scan for new plugins if necessary.
-
-You can now load **Volsed** in FL Studio or any other compatible VST3 host.
+1. Find the `Volsed.vst3` folder in the build output.
+2. Copy it to your system's VST3 plugin directory.
+3. Restart your DAW or rescan your plugins.
+4. Find Volsed in your plugin list and load it.
